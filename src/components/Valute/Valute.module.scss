@@ -1,0 +1,32 @@
+.valute {
+	display: flex;
+	flex-direction: column;
+
+	h2 {
+		color: #f1f1f1;
+	}
+	&__list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 12px;
+		overflow: scroll;
+		height: calc(100vh - 100px);
+		margin-top: 30px;
+	}
+}
+.valute__item {
+	color: #000;
+	list-style: none;
+	background-color: #f1f1f1;
+	border-radius: 8px;
+	padding: 12px 18px;
+	p {
+	}
+}
+.item__content {
+	display: flex;
+	align-items: center;
+	div {
+		margin-left: auto;
+	}
+}

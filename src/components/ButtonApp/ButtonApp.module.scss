@@ -1,0 +1,19 @@
+@import './../../styles/variables.scss';
+
+.button{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 8px;
+	background-color: $base-bg-color;
+	color: $dark-color;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	&:hover{
+		background-color: #fff;
+	}
+	
+}
