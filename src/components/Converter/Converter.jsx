@@ -1,31 +1,26 @@
 import { IconButton } from "@mui/material"
 import { useEffect, useState } from "react"
-import { InputApp } from "../Input/InputApp"
 import MultipleStopIcon from '@mui/icons-material/MultipleStop';
-import { useDispatch, useSelector } from "react-redux";
-import { setCurrency } from "../../store/features/currencySlice";
-export const Converter = () => {
-	const dispatch = useDispatch()
-	const { valute } = useSelector(state => state.valute)
-	const { leftValue, rigthValue } = useSelector(state => state.currency)
-	const [selectValue, setSelectValue] = useState()
-	const [selectValue2, setSelectValue2] = useState()
-	const [clickStatus, setClickStatus] = useState(false)
-	const [inputValue, setInputValue] = useState(0)
-	const [inputValue2, setInputValue2] = useState(0)
-	const handleSelectChange = (e) => {
-		console.log('TRIGGERED');
-		setSelectValue(e.target.value)
-		console.log(e.target.value);
+export const Converter = ({ valute }) => {
+	const [mainValute, setMainValute] = useState('USD')
+	const [secondaryValute, setSecondaryValute] = useState('KGS')
+	const [mainValue, setMainValue] = useState()
+	const [secondaryValue, setSecondaryValue] = useState()
+	const handleChangeCurrencyValutes = () => {
+		console.log('change')
+		let temp = mainValute
+		setMainValute(secondaryValute)
+		setSecondaryValute(temp)
+		// handleSelectChange()
+	}
+	const handleSelectChange = () => {
+		// setMainValute(JSON.parse(e.target.value))
 	}
 	useEffect(() => {
-		if (clickStatus) {
-			dispatch(setCurrency({ leftValue: 'AMD', rigthValue: 'USD' }))
-		} else {
-			dispatch(setCurrency({leftValue: 'RUB', rigthValue: 'KGS'}))
-		}
-	},[handleSelectChange])
-	console.log(leftValue, ' = ', rigthValue);
+		let tempValue = +mainValue * ((valute[mainValute]?.Value / valute[mainValute]?.Nominal) / (valute[secondaryValute]?.Value / valute[secondaryValute]?.Nominal))
+		setSecondaryValue(tempValue)
+	}, [mainValute, secondaryValute, mainValue])
+	console.log(mainValute, secondaryValute);
 	return (
 		<div className="converter"
 			style={{
@@ -34,9 +29,29 @@ export const Converter = () => {
 				gap: '20px',
 			}}
 		>
-			<InputApp valute={valute} handleSelectChange={handleSelectChange} />
+			<div>
+				<h4>{valute[mainValute]?.Name}</h4>
+				<div>
+					<select name="mainValute" id=""
+						value={mainValute}
+						onChange={(e) => {
+							setMainValute(e.target.value)
+						}}
+					>
+						{valute && Object.entries(valute).map(([key, item], index) => {
+							return <option key={key}
+							>{key}</option>
+						})}
+					</select>
+					<input type="number" min={0}
+						onChange={(e) => setMainValue(e.target.value)}
+						value={mainValue}
+						placeholder='Add number'
+					/>
+				</div>
+			</div>
 			<IconButton
-				onClick={() => {setClickStatus(!clickStatus)}}
+				onClick={handleChangeCurrencyValutes}
 				sx={{
 					height: '50px',
 					borderRadius: '50%',
@@ -50,7 +65,30 @@ export const Converter = () => {
 			>
 				<MultipleStopIcon />
 			</IconButton>
-			<InputApp valute={valute} handleSelectChange={handleSelectChange} />
+			<div>
+				<h4>{valute[secondaryValute]?.Name}</h4>
+				<div>
+					<select name="secondaryValute" id=""
+						// onChange={handleSelectChange}
+						onChange={(e) => {
+							console.log(e.target.value);
+							setSecondaryValute(e.target.value)
+						}}
+						value={valute[secondaryValute]?.CharCode}
+					>
+						{valute && Object.entries(valute).map(([key, item], index) => {
+							return <option key={key}
+							>{key}</option>
+						})}
+					</select>
+					<input type="number" min={0}
+						disabled
+						value={secondaryValue}
+						placeholder='Add number'
+						onChange={(e) => setSecondaryValue(e.target.value)}
+					/>
+				</div>
+			</div>
 		</div>
 	)
 }

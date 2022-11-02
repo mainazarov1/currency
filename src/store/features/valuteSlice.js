@@ -17,23 +17,16 @@ export const getValute = createAsyncThunk(
 const valuteSlice = createSlice({
 	name: 'valute',
 	initialState: {
-		valute: {}
+		valute: {},
 	},
 	reducers: {
-		// setValute(state, action) {
-		// 	state.valute = action.payload
-		// }
+		
 	},
 	extraReducers: (builder) => {
 		builder.addCase(getValute.fulfilled, (state, action) => {
 			state.valute = action.payload
 		})
 	}
-	// {
-	// 	[getValute.fulfilled]: (state, action) => {
-	// 		state.valute = action.payload.Valute
-	// 	}
-	// }
 })
 export const { setValute } = valuteSlice.actions
 export default valuteSlice.reducer

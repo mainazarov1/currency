@@ -1,9 +1,10 @@
+@import './../../styles/variables.scss';
 .valute {
 	display: flex;
 	flex-direction: column;
 
 	h2 {
-		color: #f1f1f1;
+		color: $primary-color;
 	}
 	&__list {
 		display: grid;
@@ -15,18 +16,45 @@
 	}
 }
 .valute__item {
-	color: #000;
+	color: $dark-color;
 	list-style: none;
-	background-color: #f1f1f1;
+	background-color: #fff;
+	border: 2px solid $primary-color;
 	border-radius: 8px;
 	padding: 12px 18px;
-	p {
-	}
-}
-.item__content {
 	display: flex;
-	align-items: center;
-	div {
-		margin-left: auto;
+	flex-direction: column;
+	gap: 16px;
+	.item__content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		p, div, button{
+			width: 20%;
+			// background-color: $primary-color;
+		}
+		p:first-child{
+			width: 15%;
+		}
+		p:nth-child(3){
+			width: 25%;
+		}
+		button {
+			border: none;
+			border-radius: 8px;
+			color: $base-bg-color;
+			background-color: $primary-color;
+			cursor: pointer;
+			&:first-child {
+				background-color: transparent;
+			}
+			
+		}
+		div {
+		}
+	}
+	.item__icon{
+		color: $primary-color;
+		transition: all .5s ease;
 	}
 }

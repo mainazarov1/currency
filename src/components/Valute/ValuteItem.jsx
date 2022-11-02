@@ -4,7 +4,6 @@ import StraightIcon from '@mui/icons-material/Straight';
 import { useDispatch } from "react-redux";
 import styles from './Valute.module.scss';
 import { useEffect, useState } from "react";
-import { changeValutes } from "../../store/features/currencySlice";
 
 export const ValuteItem = ({ valute }) => {
 	const dispatch = useDispatch();
@@ -25,7 +24,7 @@ export const ValuteItem = ({ valute }) => {
 				(valute?.Value / valute?.Nominal)
 			).toFixed(4)} ${valute?.CharCode}`);
 			setExchangeRate(1 / (valute?.Value / valute?.Nominal) -
-			1 / (valute?.Previous / valute?.Nominal));
+				1 / (valute?.Previous / valute?.Nominal));
 		} else {
 			setMainValuteValue(`1 ${valute?.CharCode}`);
 			setSecondaryValuteValue(`${(valute?.Value / valute?.Nominal).toFixed(4)} RUB`);
@@ -45,8 +44,14 @@ export const ValuteItem = ({ valute }) => {
 				<p>{mainValuteValue}</p>
 				<IconButton
 					onClick={handleChangeValutes}
+					className={styles.item__icon}
 				>
-					<AutorenewIcon />
+					<AutorenewIcon
+						sx={{
+							transition: 'all 0.5s ease',
+							transform: changeStatus ? 'rotate(180deg)' : 'rotate(0deg)',
+						}}
+					/>
 				</IconButton>
 				<p>{secondaryValuteValue}</p>
 				<div

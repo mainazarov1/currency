@@ -6,24 +6,46 @@ export const Navigation = () => {
 	return (
 		<nav className={styles.nav}>
 			<h1>CURRENCY</h1>
+
 			<NavLink to='/valute'
 				className='nav__link'
-				style={isActive => ({
-					color: isActive ? 'red' : 'black'
-				})}
-				children={isActive => (
-					<ButtonApp icon={<ListIcon />}
+				children={({ isActive }) => (
+					<ButtonApp
 						style={{
-							color: isActive ? 'red' : 'black'
+							color: isActive ? '#6667AB' : '#6667AB',
 						}}
+						icon={<ListIcon
+							style={{
+								padding: '3px',
+								borderRadius: '3px',
+								backgroundColor: isActive ? '#6667AB' : 'initial',
+								color: isActive ? '#fff' : '#6667AB',
+							}}
+
+						/>}
 						label='Валюта' />
 				)}
 			/>
-			<NavLink to='/converter' className="nav__link"
-				style={isActive => ({
-					color: isActive ? 'red' : 'black'
-				})}
-			>Конвертер</NavLink>
+			<NavLink to='/converter'
+				className='nav__link'
+				children={({ isActive }) => (
+					<ButtonApp
+						style={{
+							color: isActive ? '#6667AB' : '#6667AB',
+						}}
+						icon={<ListIcon
+							style={{
+								padding: '3px',
+								borderRadius: '3px',
+								backgroundColor: isActive ? '#6667AB' : 'initial',
+								color: isActive ? '#fff' : '#6667AB',
+							}}
+
+						/>}
+						label='Конвертер' />
+				)}
+			/>
+
 		</nav>
 	)
 }

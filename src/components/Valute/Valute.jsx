@@ -2,9 +2,8 @@ import { useDispatch, useSelector } from "react-redux"
 import styles from './Valute.module.scss'
 import { ValuteItem } from "./ValuteItem";
 
-export const Valute = () => {
+export const Valute = ({valute}) => {
 	const dispatch = useDispatch()
-	const { valute } = useSelector(state => state.valute)
 	// const [valuteValue, setValuteValue] = useState()
 	// const currencyCount = (mainValute) => {
 	// 	if (mainValute === 'RUB') {

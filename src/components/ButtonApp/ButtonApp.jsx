@@ -9,14 +9,8 @@ export const ButtonApp = ({ icon, label, style }) => {
 			{/* <IconButton
 				children={}
 			/> */}
-			<div
-				style={{
-					backgroundColor: '#c3c3c3',
-					borderRadius: '8px',
-					padding: '3px',
-			}}>
+			
 				{icon}
-			</div>
 			<>
 				{label}
 			</>
