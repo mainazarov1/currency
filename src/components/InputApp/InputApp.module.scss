@@ -1,13 +1,7 @@
 @import './../../styles/variables.scss';
 .inputApp{
 	display: flex;
-	&__select{
-		width: fit-content;
-		height: 50px;
-		border: none;
-		padding: 0 10px;
-		font-size: 18px;
-	}
+	
 	&__select option{
 		width: 100px;
 		background-color: $primary-color;
