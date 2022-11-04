@@ -20,48 +20,50 @@ export const Converter = ({ valute }) => {
 		dispatch(changeSecondaryValue({ mainValue, mainValute: valute[mainValute], secondaryValute: valute[secondaryValute] }))
 	}, [mainValute, secondaryValute, mainValue])
 	return (
-		<div className={styles.converter}
-			style={{
-				display: 'flex',
-				justifyContent: 'center',
-				gap: '20px',
-			}}
-		>
-			<div className={styles.converter__container}>
-				<h4>{valute[mainValute]?.Name}</h4>
-				<div className={styles.converter__content}>
-					<SelectApp
-						name="mainValute"
-						value={mainValute}
-						handleChange={handleSelectChange}
-						valute={valute}
-					/>
-					<InputApp
-						handleChange={(e) => dispatch(changeMainValue(e.target.value))}
-						placeholder='Add number'
-					/>
-				</div>
-			</div>
-			<IconButton
-				onClick={handleChangeCurrencyValutes}
-				
+		<div>
+			<h2>Конвертер</h2>
+			<div className={styles.converter}
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					gap: '20px',
+				}}
 			>
-				<MultipleStopIcon />
-			</IconButton>
-			<div className={styles.converter__container}>
-				<h4>{valute[secondaryValute]?.Name}</h4>
-				<div className={styles.converter__content}>
-					<SelectApp
-						name="secondaryValute"
-						value={secondaryValute}
-						handleChange={handleSelectChange}
-						valute={valute}
-					/>
-					<InputApp
-						value={+secondaryValue || ''}
-						handleChange={(e) => dispatch(changeSecondaryValue(e.target.value))}
-						placeholder='Полученная сумма'
-					/>
+				<div className={styles.converter__container}>
+					<h4>{valute[mainValute]?.Name}</h4>
+					<div className={styles.converter__content}>
+						<SelectApp
+							name="mainValute"
+							value={mainValute}
+							handleChange={handleSelectChange}
+							valute={valute}
+						/>
+						<InputApp
+							handleChange={(e) => dispatch(changeMainValue(e.target.value))}
+							placeholder='Add number'
+						/>
+					</div>
+				</div>
+				<IconButton
+					onClick={handleChangeCurrencyValutes}
+				>
+					<MultipleStopIcon />
+				</IconButton>
+				<div className={styles.converter__container}>
+					<h4>{valute[secondaryValute]?.Name}</h4>
+					<div className={styles.converter__content}>
+						<SelectApp
+							name="secondaryValute"
+							value={secondaryValute}
+							handleChange={handleSelectChange}
+							valute={valute}
+						/>
+						<InputApp
+							value={+secondaryValue || ''}
+							placeholder='Полученная сумма'
+							disabled
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

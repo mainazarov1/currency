@@ -4,4 +4,8 @@
 	border: none;
 	padding: 0 10px;
 	font-size: 18px;
+	border-radius: 16px 0 0 16px;
+	&:focus {
+		outline: none;
+	}
 }
