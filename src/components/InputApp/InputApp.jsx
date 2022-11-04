@@ -1,5 +1,5 @@
 import styles from './InputApp.module.scss';
-export const InputApp = ({ value, handleChange, placeholder }) => {
+export const InputApp = ({ value, handleChange, placeholder, ...props }) => {
 	
 	return (
 		<div className={styles.inputApp}>
@@ -9,6 +9,7 @@ export const InputApp = ({ value, handleChange, placeholder }) => {
 				onChange={handleChange}
 				placeholder={placeholder}
 				value={value}
+				{...props}
 			/>
 		</div>
 	)

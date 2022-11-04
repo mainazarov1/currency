@@ -16,8 +16,8 @@ function App() {
 		<div className="App">
 			<Routes>
 				<Route path='/' element={<SideBar />}>
-					<Route path='/valute' element={<Valute valute={valute}/>} />
-					<Route path='/converter' element={<Converter valute={valute} />} />
+					<Route path='' element={<Valute valute={valute}/>} />
+					<Route path='converter' element={<Converter valute={valute} />} />
 				</Route>
 			</Routes>
 		</div>

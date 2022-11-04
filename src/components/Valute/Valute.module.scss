@@ -5,6 +5,7 @@
 
 	h2 {
 		color: $primary-color;
+		margin-bottom: 30px;
 	}
 	&__list {
 		display: grid;
@@ -12,13 +13,12 @@
 		gap: 12px;
 		overflow: scroll;
 		height: calc(100vh - 100px);
-		margin-top: 30px;
 	}
 }
 .valute__item {
 	color: $dark-color;
 	list-style: none;
-	background-color: #fff;
+	background-color: $secondary-color;
 	border: 2px solid $primary-color;
 	border-radius: 8px;
 	padding: 12px 18px;
@@ -29,19 +29,21 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		p, div, button{
-			width: 20%;
+		p, div{
+			min-width: 70px;
+			// width: 10%;
 			// background-color: $primary-color;
 		}
 		p:first-child{
-			width: 15%;
+			width: 10%;
 		}
 		p:nth-child(3){
 			width: 25%;
 		}
 		button {
+			width: 40px;
 			border: none;
-			border-radius: 8px;
+			border-radius: 50%;
 			color: $base-bg-color;
 			background-color: $primary-color;
 			cursor: pointer;

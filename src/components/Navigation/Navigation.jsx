@@ -7,7 +7,7 @@ export const Navigation = () => {
 		<nav className={styles.nav}>
 			<h1>CURRENCY</h1>
 
-			<NavLink to='/valute'
+			<NavLink to='' end
 				className='nav__link'
 				children={({ isActive }) => (
 					<ButtonApp
